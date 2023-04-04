@@ -86,7 +86,7 @@ class Knight:
         return self.color
 
     def can_move(self, row, col):
-        if not correct_coords(row, col):
+        if not (0 <= row < 8 and 0 <= col < 8):
             return False
         row1, col1 = self.row + 2, self.col + 1
         if row == row1 and col == col1:
