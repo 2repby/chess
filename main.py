@@ -89,38 +89,29 @@ class Knight:
         if not correct_coords(row, col):
             return False
         row1, col1 = self.row + 2, self.col + 1
-        if correct_coords(row1, col1):
-            if row == row1 and col == col1:
-                return True
+        if row == row1 and col == col1:
+            return True
         row1, col1 = self.row + 2, self.col - 1
-        if correct_coords(row1, col1):
-            if row == row1 and col == col1:
-                return True
+        if row == row1 and col == col1:
+            return True
         row1, col1 = self.row - 2, self.col + 1
-        if correct_coords(row1, col1):
-            if row == row1 and col == col1:
-                return True
+        if row == row1 and col == col1:
+            return True
         row1, col1 = self.row - 2, self.col - 1
-        if correct_coords(row1, col1):
-            if row == row1 and col == col1:
-                return True
-
+        if row == row1 and col == col1:
+            return True
         row1, col1 = self.row + 1, self.col + 2
-        if correct_coords(row1, col1):
-            if row == row1 and col == col1:
-                return True
+        if row == row1 and col == col1:
+            return True
         row1, col1 = self.row + 1, self.col - 2
-        if correct_coords(row1, col1):
-            if row == row1 and col == col1:
-                return True
+        if row == row1 and col == col1:
+            return True
         row1, col1 = self.row - 1, self.col + 2
-        if correct_coords(row1, col1):
-            if row == row1 and col == col1:
-                return True
+        if row == row1 and col == col1:
+            return True
         row1, col1 = self.row - 1, self.col - 2
-        if correct_coords(row1, col1):
-            if row == row1 and col == col1:
-                return True
+        if row == row1 and col == col1:
+            return True
 
         return False
 
