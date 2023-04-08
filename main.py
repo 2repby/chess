@@ -115,6 +115,40 @@ class Knight:
 
         return False
 
+class Bishop:
+
+    def __init__(self, row, col, color):
+        self.row = row
+        self.col = col
+        self.color = color
+
+    def set_position(self, row, col):
+        self.row = row
+        self.col = col
+
+    def char(self):
+        return 'B'
+
+    def get_color(self):
+        return self.color
+
+    def can_move(self, row, col):
+        if not (0 <= row < 8 and 0 <= col < 8):
+            return False
+        if row > self.row and col > self.col:
+            if row - self.row == col - self.col:
+                return True
+        if row > self.row and col < self.col:
+            if row - self.row == self.col - col:
+                return True
+        if row < self.row and col < self.col:
+            if self.row - row == self.col - col:
+                return True
+        if row < self.row and col > self.col:
+            if self.row - row == col - self.col:
+                return True
+        return False
+
 class Board:
     def __init__(self):
         self.color = WHITE
@@ -214,23 +248,19 @@ def main():
 
 # main()
 
-row0_W = 0
-col0_W = 1
-knight_W = Knight(row0_W, col0_W, WHITE)
+WHITE=1
+BLACK=2
 
-row0_B = 7
-col0_B = 6
-knight_B = Knight(row0_B, col0_B, BLACK)
+row0 = 7
+col0 = 5
+bishop = Bishop(row0, col0, BLACK)
 
-print('white' if knight_W.get_color() == WHITE else 'black')
-print('white' if knight_B.get_color() == WHITE else 'black')
-for row in range(7, -1, -1):
-    for col in range(8):
-        if (row0_W, col0_W) == (row, col):
-            print(knight_W.char(), end='')
-        elif (row0_B, col0_B) == (row, col):
-            print(knight_B.char(), end='')
-        elif knight_W.can_move(row, col) or knight_B.can_move(row, col):
+print('white' if bishop.get_color() == WHITE else 'black')
+for row in range(8, -2, -1):
+    for col in range(-1, 9):
+        if row == row0 and col == col0:
+            print(bishop.char(), end='')
+        elif bishop.can_move(row, col):
             print('x', end='')
         else:
             print('-', end='')
