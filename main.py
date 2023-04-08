@@ -149,6 +149,33 @@ class Bishop:
                 return True
         return False
 
+
+class Queen:
+
+    def __init__(self, row, col, color):
+        self.row = row
+        self.col = col
+        self.color = color
+
+    def set_position(self, row, col):
+        self.row = row
+        self.col = col
+
+    def char(self):
+        return 'Q'
+
+    def get_color(self):
+        return self.color
+
+    def can_move(self, row, col):
+        if not (0 <= row < 8 and 0 <= col < 8):
+            return False
+        rook = Rook(self.row, self.col, self.color)
+        bishop = Rook(self.row, self.col, self.color)
+        if rook.can_move(row, col) or bishop.can_move(row, col):
+            return True
+        return False
+
 class Board:
     def __init__(self):
         self.color = WHITE
@@ -251,16 +278,16 @@ def main():
 WHITE=1
 BLACK=2
 
-row0 = 7
+row0 = 4
 col0 = 5
-bishop = Bishop(row0, col0, BLACK)
+queen = Queen(row0, col0, BLACK)
 
-print('white' if bishop.get_color() == WHITE else 'black')
-for row in range(8, -2, -1):
-    for col in range(-1, 9):
+print('white' if queen.get_color() == WHITE else 'black')
+for row in range(7, -1, -1):
+    for col in range(8):
         if row == row0 and col == col0:
-            print(bishop.char(), end='')
-        elif bishop.can_move(row, col):
+            print(queen.char(), end='')
+        elif queen.can_move(row, col):
             print('x', end='')
         else:
             print('-', end='')
